@@ -14,8 +14,8 @@
   padding: 10px;
 }
 .chess-square--light {
-  background: rgb(238, 124, 124);
+  background: rgb(245, 139, 139);
 }
 .chess-square--dark {
-  background: rgb(87, 9, 9);
+  background: rgb(133, 14, 14);
 }
