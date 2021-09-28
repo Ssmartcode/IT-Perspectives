@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import initialMatrix from "./matrix.js";
 import { v4 } from "uuid";
 import "./ChessTable.css";
+import ChessPiece from "../ChessPiece/ChessPiece.js";
 
 const ChessTable = () => {
   const [matrix, setMatrix] = useState(initialMatrix);
@@ -17,7 +18,9 @@ const ChessTable = () => {
             <div
               key={v4()}
               className={`chess-square--${parity ? "light" : "dark"}`}
-            ></div>
+            >
+              <ChessPiece pieceId={matrix[rowIndex][pieceIndex]} />
+            </div>
           );
         });
       })}
