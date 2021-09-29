@@ -10,10 +10,14 @@ const ChessPiece = (props) => {
   const [selected, setSelected] = useState(false);
 
   const gameContext = useContext(GameContext);
-  const { selectPiece, selectedPiece } = gameContext;
+  const { selectedPiece, playerTurn, matrix, selectPiece } = gameContext;
 
   const handlePieceSelect = () => {
     const [selectedX, selectedY] = selectedPiece;
+
+    // check if the piece we are about to select belongs to the current player
+    if (typeof matrix[x][y] === "string" && playerTurn === 1) return;
+    if (typeof matrix[x][y] === "number" && playerTurn === 2) return;
 
     if (selectedX === x && selectedY === y) {
       // if user clicks on same piece twice i will deselect it

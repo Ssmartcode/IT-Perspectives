@@ -11,14 +11,14 @@ const isCollidng = (matrix, piece, destination) => {
     if (pY === dY) {
       if (pX > dX) {
         for (let i = pX - 1; i > dX; i--) {
-          if (matrix[i][pY] === "x" || matrix[i][pY] === 1) {
+          if (matrix[i][pY] && typeof matrix[i][pY] !== typeof matrix[pX][pY]) {
             return true;
           }
         }
       }
       if (pX < dX) {
         for (let i = pX + 1; i < dX; i++) {
-          if (matrix[i][pY] === "x" || matrix[i][pY] === 1) {
+          if (matrix[i][pY] && typeof matrix[i][pY] !== typeof matrix[pX][pY]) {
             return true;
           }
         }
@@ -29,14 +29,14 @@ const isCollidng = (matrix, piece, destination) => {
     if (pX === dX) {
       if (pY > dY) {
         for (let i = pY - 1; i > dY; i--) {
-          if (matrix[pX][i] === "x" || matrix[pX][i] === 1) {
+          if (matrix[pX][i] && typeof matrix[pX][i] !== typeof matrix[pX][pY]) {
             return true;
           }
         }
       }
       if (pY < dY) {
         for (let i = pY + 1; i < dY; i++) {
-          if (matrix[pX][i] === "x" || matrix[pX][i] === 1) {
+          if (matrix[pX][i] && typeof matrix[pX][i] !== typeof matrix[pX][pY]) {
             return true;
           }
         }

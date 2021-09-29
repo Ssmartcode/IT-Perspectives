@@ -12,6 +12,7 @@ import "./App.css";
 function App() {
   const [selectedPiece, setSelectedPiece] = useState([]); //coords of selected chess piece
   const [matrix, setMatrix] = useState(initialMatrix); //matrix of the chess table
+  const [playerTurn, setPlayerTurn] = useState(1);
 
   const selectPiece = useCallback((piecePositon) => {
     // here we store thee coordontaes of the chess piece that has been clicked
@@ -56,6 +57,11 @@ function App() {
 
       // update the matrix and rerender it on the screen
       setMatrix(newMatrix);
+
+      // change player turn
+      setPlayerTurn((playerTurn) =>
+        playerTurn === 1 ? playerTurn + 1 : playerTurn - 1
+      );
     },
     [matrix, selectedPiece]
   );
@@ -67,7 +73,14 @@ function App() {
   return (
     <React.Fragment>
       <GameContext.Provider
-        value={{ selectedPiece, matrix, selectPiece, movePiece, restart }}
+        value={{
+          selectedPiece,
+          playerTurn,
+          matrix,
+          selectPiece,
+          movePiece,
+          restart,
+        }}
       >
         <div className="container">
           <div className="top-row">

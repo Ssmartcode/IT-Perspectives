@@ -1,6 +1,7 @@
 import pawn from "./images/pawn.png";
 import rook from "./images/rook.png";
 import bishop from "./images/bishop.png";
+
 import pawnWhite from "./images/pawn-white.png";
 import rookWhite from "./images/rook-white.png";
 import bishopWhite from "./images/bishop-white.png";
