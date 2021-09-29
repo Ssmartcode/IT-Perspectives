@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./ChessPiece.css";
+
 import mapImages from "./mapImages";
 import GameContext from "../../context/gameContext";
+
+import "./ChessPiece.css";
 
 const ChessPiece = (props) => {
   const { x, y } = props;
@@ -11,17 +13,26 @@ const ChessPiece = (props) => {
   const { selectPiece, selectedPiece } = gameContext;
 
   const handlePieceSelect = () => {
-    selectPiece([x, y]);
+    const [selectedX, selectedY] = selectedPiece;
+
+    if (selectedX === x && selectedY === y) {
+      // if user clicks on same piece twice i will deselect it
+      selectPiece([]);
+    } else {
+      selectPiece([x, y]);
+    }
   };
 
   useEffect(() => {
     const [selectedX, selectedY] = selectedPiece;
     // check if the selected piece on the table is the same with this piece
     // by comparing the x and y coordonates
-    if (selectedX === x && selectedY === y) setSelected(true);
-  }, [selectedPiece]);
+    if (selectedX === x && selectedY === y) {
+      setSelected(true);
+    }
+  }, [selectedPiece, x, y]);
 
-  // if no piece given return nothing
+  // if no pieceId given return nothing
   if (!props.pieceId) return null;
 
   return (

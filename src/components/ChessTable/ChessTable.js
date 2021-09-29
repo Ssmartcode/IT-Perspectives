@@ -1,17 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { v4 } from "uuid";
-import "./ChessTable.css";
+
 import ChessPiece from "../ChessPiece/ChessPiece.js";
 import gameContext from "../../context/gameContext";
 
+import "./ChessTable.css";
+
 const ChessTable = () => {
   const context = useContext(gameContext);
-  const { selectedPiece, movePiece } = context;
+  const { matrix, selectedPiece, movePiece } = context;
 
   const handleTaleClick = (x, y) => {
     return () => {
-      console.log("handle tale");
-      if (!selectedPiece.length) return;
+      // if there is no selected piece dont do anything
+      if (!selectedPiece.length) {
+        return;
+      }
+
+      // if there is a selected piece move it to the selected tale
       movePiece(x, y);
     };
   };
