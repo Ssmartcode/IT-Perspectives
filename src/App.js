@@ -6,6 +6,7 @@ import GameContext from "./context/gameContext";
 
 import ChessTable from "./components/ChessTable/ChessTable";
 import "./App.css";
+import RestartGame from "./components/RestartGame/RestartGame.js";
 
 function App() {
   const [selectedPiece, setSelectedPiece] = useState([]); //coords of selected chess piece
@@ -63,7 +64,10 @@ function App() {
       <GameContext.Provider
         value={{ selectedPiece, matrix, selectPiece, movePiece }}
       >
-        <ChessTable></ChessTable>
+        <div className="container">
+          <RestartGame />
+          <ChessTable />
+        </div>
       </GameContext.Provider>
     </React.Fragment>
   );

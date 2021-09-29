@@ -2,7 +2,6 @@
   background: #f4f4f4;
   border-radius: 5px;
   border: 7px solid #111;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   margin: auto;
   display: grid;
   grid-template-columns: repeat(8, 1fr);

@@ -5,7 +5,9 @@ const isCollidng = (matrix, piece, destination) => {
   const [pX, pY] = piece;
   const [dX, dY] = destination;
 
+  // check collistion only for pawns
   if (matrix[pX][pY] === 1 || matrix[pX][pY] === "x") {
+    // check collision vertically
     if (pY === dY) {
       if (pX > dX) {
         for (let i = pX - 1; i > dX; i--) {
@@ -17,6 +19,24 @@ const isCollidng = (matrix, piece, destination) => {
       if (pX < dX) {
         for (let i = pX + 1; i < dX; i++) {
           if (matrix[i][pY] === "x" || matrix[i][pY] === 1) {
+            return true;
+          }
+        }
+      }
+    }
+
+    // check collision horizontaly
+    if (pX === dX) {
+      if (pY > dY) {
+        for (let i = pY - 1; i > dY; i--) {
+          if (matrix[pX][i] === "x" || matrix[pX][i] === 1) {
+            return true;
+          }
+        }
+      }
+      if (pY < dY) {
+        for (let i = pY + 1; i < dY; i++) {
+          if (matrix[pX][i] === "x" || matrix[pX][i] === 1) {
             return true;
           }
         }
