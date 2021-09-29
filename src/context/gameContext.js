@@ -5,6 +5,7 @@ const context = createContext({
   matrix: [],
   selectPiece: () => {},
   movePiece: () => {},
+  restart: () => {},
 });
 
 export default context;

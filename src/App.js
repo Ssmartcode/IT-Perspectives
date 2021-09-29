@@ -5,8 +5,9 @@ import isColliding from "./utils/isColliding.js";
 import GameContext from "./context/gameContext";
 
 import ChessTable from "./components/ChessTable/ChessTable";
-import "./App.css";
+import Turn from "./components/Turn/Turn.js";
 import RestartGame from "./components/RestartGame/RestartGame.js";
+import "./App.css";
 
 function App() {
   const [selectedPiece, setSelectedPiece] = useState([]); //coords of selected chess piece
@@ -59,13 +60,20 @@ function App() {
     [matrix, selectedPiece]
   );
 
+  const restart = useCallback(() => {
+    setMatrix(initialMatrix);
+  });
+
   return (
     <React.Fragment>
       <GameContext.Provider
-        value={{ selectedPiece, matrix, selectPiece, movePiece }}
+        value={{ selectedPiece, matrix, selectPiece, movePiece, restart }}
       >
         <div className="container">
-          <RestartGame />
+          <div className="top-row">
+            <RestartGame />
+            <Turn />
+          </div>
           <ChessTable />
         </div>
       </GameContext.Provider>

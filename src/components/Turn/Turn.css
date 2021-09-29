@@ -1,0 +1,10 @@
+.player-turn {
+  background: #f4f4f4;
+  border: 7px solid #111;
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 0.5rem 2rem;
+  width: 100%;
+  margin-left: 1rem;
+  text-align: center;
+}
